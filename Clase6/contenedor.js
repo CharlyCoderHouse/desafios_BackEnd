@@ -47,9 +47,11 @@ class Contenedor {
     async getAll(){
         try {
             const data = await fs.promises.readFile(this.ruta, 'utf8')
+            // console.log(data);
             return JSON.parse(data)
         } catch (error) {
             return []
+            // return(error)
         }
     }
 
