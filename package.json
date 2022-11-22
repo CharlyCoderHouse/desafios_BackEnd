@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "Desafios de clases de la formación de Backend CoderHouse del alumno Carlos Di Blasi",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon ./Clase8/src/server.js"
   },
   "repository": {
     "type": "git",
