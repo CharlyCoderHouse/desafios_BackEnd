@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon ./Clase8/src/server.js"
+    "start": "nodemon ./Clase10/src/server.js"
   },
   "repository": {
     "type": "git",
@@ -18,10 +18,12 @@
   },
   "homepage": "https://github.com/CharlyCoderHouse/desafios_BackEnd#readme",
   "dependencies": {
+    "ejs": "^3.1.8",
     "express": "^4.18.2",
+    "express-handlebars": "^6.0.6",
     "moment": "^2.29.4",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "pug": "^3.0.2"
   },
-  "devDependencies": {},
   "keywords": []
 }
