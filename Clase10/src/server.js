@@ -30,8 +30,8 @@ app.set("view engine", "pug");
 app.set("views", join(__dirname, "../views.pug"));
 
 //EJS
-// app.set("view engine", "ejs");
-// app.set("views", join(__dirname, "../views"));
+/* app.set("view engine", "ejs");
+app.set("views", join(__dirname, "../views")); */
 
 //middleware Log conexiones
 app.use((req, res, next) => {

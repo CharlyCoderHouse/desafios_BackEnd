@@ -1,19 +1,30 @@
 <h1>Vista de productos - Desafio Clase 10</h1>
 {{#if productos.length}}
-    <ul>
-    {{#each productos}}
-        <li>
-            <p>Nombre: {{this.title}}</p>
-            <p>Precio: {{this.price}}</p>
-            <img src="{{this.thumbnail}}" alt="imagen" width="50" />
-        </li>
-    {{/each}}
-    </ul>
+    <div class="table-responsive tabla">
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre </th>
+                    <th scope="col"> Precio </th>
+                    <th scope="col"> Foto </th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each productos}}
+                    <tr>
+                        <th scope="row"> {{this.title}}</th>
+                        <th scope="row"> {{this.price}}</th>
+                        <th scope="row"> <img src="{{this.thumbnail}}" alt="imagen" width="50" /> </th>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>    
+    </div>
 {{else}}    
-    <p>No se encontraron productos </p>
+    <h2 style="color: chocolate;">No se encontraron productos </h2>
 {{/if}}
 
-<button id="formButton"> Ir a Cargar Productos</button>
+<button id="formButton" class="btn btn-secondary"> Ir a Cargar Productos</button>
 
 <script>
     const  formButton = document.getElementById('formButton')

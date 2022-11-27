@@ -4,18 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <title>Clase 10 - Desafio Plantillas</title>
 </head>
 <body>
     <h1>Carga tu producto - Desafio Clase 10</h1>
     <form action="/product" method="post">
-        <input type="text" name="title" placeholder="ingrese nombre"> <br>
-        <input type="number" name="price" placeholder="ingrese precio"> <br>
-        <input type="text" name="thumbnail" placeholder="url imagen"> <br>
-        <input type="submit" value="Cargar Producto">
+        <div class="mb-3">
+            <label for="exampleInput1" class="form-label">Nombre</label> 
+            <input type="text" class="form-control" name="title" placeholder="ingrese nombre"> 
+        </div>
+        <div class="mb-3">
+            <label for="exampleInput2" class="form-label">Precio</label> 
+            <input type="number" class="form-control" name="price" placeholder="ingrese precio">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInput3" class="form-label">Foto URL</label> 
+            <input type="text" class="form-control" name="thumbnail" placeholder="url imagen">
+        </div>
+        <button type="submit" class="btn btn-primary"value="Cargar Producto"> Cargar Producto </button>
     </form>
 
-    <button id="verProdButton"> Ver los Productos</button>
+    <br>
+    <button id="verProdButton" class="btn btn-secondary"> Ver los Productos</button>
 
     <script>
         const verProdButton = document.getElementById('verProdButton')

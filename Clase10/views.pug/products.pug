@@ -3,15 +3,19 @@ extends main.pug
 block datos 
     h1 Carga tu producto - Desafio Clase 10
     form(action="/product" method="post")
-        input(type="text" name="title" placeholder="ingrese nombre")
-        br
-        input(type="number" name="price" placeholder="ingrese precio")
-        br
-        input(type="text" name="thumbnail" placeholder="url imagen")
-        br
-        input(type="submit" value="Cargar Producto")
+        div(class="mb-3")
+            label(for="exampleInput1" class="form-label") Nombre
+            input(type="text" class="form-control" name="title" placeholder="ingrese nombre")
+        div(class="mb-3")
+            label(for="exampleInput2" class="form-label") Precio
+            input(type="number" class="form-control" name="price" placeholder="ingrese precio")
+        div(class="mb-3")
+            label(for="exampleInput3" class="form-label") Foto URL
+            input(type="text" class="form-control" name="thumbnail" placeholder="url imagen")
+        button(type="submit" class="btn btn-primary" value="Cargar Producto") Cargar Producto
     
-    button(id="verProdButton") Ver los Productos
+    br
+    button(id="verProdButton" class="btn btn-secondary") Ver los Productos
 
     script. 
         const verProdButton = document.getElementById('verProdButton')
