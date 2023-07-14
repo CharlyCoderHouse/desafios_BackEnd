@@ -1,3 +1,6 @@
+import CustomError from "../middlewares/errors/customError.js"
+import EErrors from "../middlewares/errors/enums.js";
+import { generateProductErrorInfo } from '../middlewares/errors/info.js';
 import { 
     getProducts as getProductsService, 
     postProduct as postProductService,
@@ -48,8 +51,22 @@ const postProduct = async (req, res) => {
     }
     //Valido que los campos estén completos
     if(!product.title || !product.description || !product.code || !product.price || !product.stock || !product.category){
-        return res.status(400).send({error:'Hay campos que faltan completar!'});
+        throw CustomError.createError({
+            name: 'ProductError',
+            cause: generateProductErrorInfo({
+                "title":product.title,
+                "description":product.description,
+                "code":product.code, 
+                "stock":product.stock,
+                "price":product.price
+            }),
+            message: 'Error trying to create product',
+            code: EErrors.INVALID_TYPE_ERROR
+        })
     };
+    // if(!product.title || !product.description || !product.code || !product.price || !product.stock || !product.category){
+    //     return res.status(400).send({error:'Hay campos que faltan completar!'});
+    // };
     //MongoDB
     try {
         const result = await postProductService(product);

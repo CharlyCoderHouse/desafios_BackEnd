@@ -9,7 +9,7 @@ import productsRouter from './routes/products.route.js';
 import cartsRouter from './routes/cart.route.js';
 import viewsProdRouter from './routes/viewsProd.route.js';
 import sessionsRouter from './routes/sessions.router.js';
-import mockingproducts from './routes/mockingproducts.route.js';
+import mockingProducts from './routes/mockingproducts.route.js';
 import './dao/dbManager/dbConfig.js'
 import config from './config/config.js';
 import viewsMessage from "./routes/viewsMessage.router.js"
@@ -65,7 +65,7 @@ app.use('/realtimeproducts', viewsProdRouter)
 // Page Chat
 app.use('/chat', viewsMessage)
 // MONCKING
-app.use('/mockingproducts', mockingproducts);
+app.use('/mockingproducts', mockingProducts);
 
 //Escuchando puerto con log de errores
 const server = app.listen(config.port, (error) => {

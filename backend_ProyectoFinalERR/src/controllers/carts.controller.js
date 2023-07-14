@@ -11,6 +11,9 @@ import {
     getProductById as getProductByIdService, 
     stockProduct as stockProductService
 } from "../services/products.service.js";
+import CustomError from "../middlewares/errors/customError.js"
+import EErrors from "../middlewares/errors/enums.js";
+import { generateProductInCartErrorInfo } from "../middlewares/errors/info.js"
 
 const postCart = async(req, res) => {
     // Inicializo el carrito sin productos
@@ -113,16 +116,31 @@ const putProductInCart = async(req, res) => {
         return res.status(404).json(response);
     };
     // Una vez validado llamar al metodo addProductInCart en service
-    try {
-        //console.log("Intento insertar");
-        const result = await putProductInCartService(cartId, productId, quantity);
-        //console.log("router: " + JSON.stringify(result, null, '\t'));
-        if(result.acknowledged) {
-            res.status(200).send({ status: 'success', payload: 'Se actualizo correctamente el producto al carrito' })
-        };
-    } catch (error) {
-        res.status(404).send({ status: "NOT FOUND", payload: `No se pudo actualizar el Producto al carrito!` });
-    };
+
+    const result = await putProductInCartService(cartId, productId, quantity);
+    if(result.acknowledged) {
+        res.status(200).send({ status: 'success', payload: 'Se actualizo correctamente el producto al carrito' })
+    } else {
+        throw CustomError.createError({
+            name: 'ProductError',
+            cause: generateProductInCartErrorInfo({
+                productId,
+                quantity
+            }),
+            message: 'Error trying to create user',
+            code: EErrors.INVALID_CART
+        })
+    }
+    // try {
+    //     //console.log("Intento insertar");
+    //     const result = await putProductInCartService(cartId, productId, quantity);
+    //     //console.log("router: " + JSON.stringify(result, null, '\t'));
+    //     if(result.acknowledged) {
+    //         res.status(200).send({ status: 'success', payload: 'Se actualizo correctamente el producto al carrito' })
+    //     };
+    // } catch (error) {
+    //     res.status(404).send({ status: "NOT FOUND", payload: `No se pudo actualizar el Producto al carrito!` });
+    // };
 };
 
 const deleteProductInCart = async(req, res) => {
