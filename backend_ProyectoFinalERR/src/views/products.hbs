@@ -1,0 +1,67 @@
+{{!-- Esta pagina es estática, como pide la consigna, se da la vista al cargar pero
+no cambia hasta refrescar --}}
+<h1>Bienvenidos al servidor express - Joyería Puga</h1> <br>
+<h2>Vista de productos</h2>
+  
+{{#if isValid}}
+    <div class="filter">
+        <p>Filtrar por Categoría:</p>
+        <select id="categSel1" name="categSel">
+            <option value="c1">Seleccione una categoría</option>
+            <option value="c2">Joyeria</option>
+            <option value="c3">Relojeria</option>
+            <option value="c4">Accesorios</option>
+            <option value="c5">Marroquineria</option>
+            <option value="c6">Ver todos</option>
+        </select>
+        <p>Ordenar por Precio:</p>
+        <select id="ordPri" >
+            <option value="v1">Orden por precio</option>
+            <option value="v2">Por menor precio</option>
+            <option value="v3">Por mayor precio</option>
+            </select>
+    </div>
+    
+    <div class="col cajaProductos">
+    {{#each docs}}        
+        <div class="card h-100 shadow-sm">
+            <img class="card-img-top" src="{{this.thumbnail}}" alt="products">
+            <div class="card-body">
+                <div class="clearfix mb-3">
+                    <span class="float-end badge rounded-pill bg-success">$ {{this.price}}.-</span>
+                </div>
+                <h5 class="card-title">{{this.title}}</h5>
+                <h2 class="description">{{this.description}}</h2>
+                <h2 class="stock">Stock disponible: {{this.stock}}</h2>
+                <div class="text-center my-4">
+                    <!-- Botón Modal Carrito -->
+                    <button type="button" class="btn btncaja btn-warning" 
+                        id="{{this._id}}" onclick="procesoId(this)">
+                        Agregar al Carrito
+                    </button>
+                </div>
+            </div>
+        </div>
+    {{/each}}           
+    </div>
+    <div>
+        {{#if hasPrevPage}}
+            <a class="btn btn-warning" href={{this.prevLink}}><< Anterior</a>  
+        {{/if}}
+        &nbsp;
+        {{this.page}}
+        &nbsp;
+        {{#if hasNextPage}}
+            <a class="btn btn-warning" href={{this.nextLink}}>Siguiente >></a>  
+        {{/if}} 
+    </div>
+
+{{else}}    
+    <h2 style="color: chocolate;">No se encontraron productos </h2>
+{{/if}}
+<br/>
+<button id="viewCart" class="btn btn-warning"> Ver Mi Carrito</button>
+<button id="goHome" class="btn btn-secondary"> Ir al Home</button>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/index.js"></script>

@@ -1,0 +1,60 @@
+{{!-- Esta pagina es con WebSockets, como pide la consigna, Agregue un formulario para cargar
+un producto nuevo y por debajo la lista de productos --}}
+<h1>Carga tu producto</h1>
+{{!-- <form action="/api/products" method="post"> --}}
+<form id="productForm">
+    <div class="row">
+        <div class="mb-3 col">
+            <label for="exampleInput1" class="form-label">Código</label> 
+            <input type="text" class="form-control" name="code" placeholder="ingrese código">
+            <label for="exampleInput2" class="form-label">Nombre</label> 
+            <input type="text" class="form-control" name="title" placeholder="ingrese nombre">
+        </div>
+        <div class="mb-3 col">
+            <label for="exampleInput3" class="form-label">Descripción</label> 
+            <input type="text" class="form-control" name="description" placeholder="ingrese descripción">
+            <label for="exampleInput4" class="form-label">Categoría</label> 
+            <input type="text" class="form-control" name="category" placeholder="ingrese categoría">
+        </div>        
+        <div class="mb-3 col">
+            <label for="exampleInput5" class="form-label">Precio</label> 
+            <input type="number" class="form-control" name="price" placeholder="ingrese precio">
+            <label for="exampleInput6" class="form-label">Stock</label> 
+            <input type="number" class="form-control" name="stock" placeholder="ingrese precio">
+        </div>
+        <div class="mb-3 col">
+            <label for="exampleInput7" class="form-label">Foto URL</label> 
+            <input type="text" class="form-control" name="thumbnail" placeholder="url imagen">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary" value="Cargar Producto" id="butAdd"> Cargar Producto </button>
+</form>
+<br>
+{{!-- <button class="btn btn-secondary" id="delProd"> Eliminar Producto </button>
+<br><br> --}}
+<button id="goHome" class="btn btn-secondary"> Ir al Home</button>
+<br><br>
+<div class="table-responsive tabla">
+    <table class="table table-success table-striped">
+        <thead>
+            <tr>
+                <th scope="col"> Id </th>
+                <th scope="col"> Código </th>
+                <th scope="col"> Nombre </th>
+                <th scope="col"> Descripción </th>
+                <th scope="col"> Categoría </th>
+                <th scope="col"> Precio </th>
+                <th scope="col"> Stock </th>
+                <th scope="col"> Imagen </th>
+                <th scope="col"> Eliminar </th>
+            </tr>
+        </thead>
+        <tbody id="container">
+        </tbody>
+    </table>    
+</div>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/index.js"></script>
+<script src="/js/socket.js"></script>
