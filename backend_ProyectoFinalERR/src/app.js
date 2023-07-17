@@ -18,6 +18,7 @@ import messageManager from './dao/dbManager/message.Manager.js';
 import cookieParser from 'cookie-parser';
 import initializePassport from './config/passport.config.js';
 import passport from 'passport';
+import errorHandler from "./middlewares/errors/index.js";
 
 //Creo el Servidor Express
 const app = express();
@@ -66,6 +67,9 @@ app.use('/realtimeproducts', viewsProdRouter)
 app.use('/chat', viewsMessage)
 // MONCKING
 app.use('/mockingproducts', mockingProducts);
+
+// CONTROL DE ERRORES CUSTOM
+app.use(errorHandler);
 
 //Escuchando puerto con log de errores
 const server = app.listen(config.port, (error) => {
